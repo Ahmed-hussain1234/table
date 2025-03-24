@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <div class="container" style="margin-top: 100px;">
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <td>Table No</td>
+                <td><input type="text" id="TblNo" class="form-control" /></td>
+            </tr>
+
+            <tr>
+                <td>Table Range</td>
+                <td><input type="text" id="tblRange" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right"><button id="btn" class="btn btn-success">Generate</button></td>
+            </tr>
+        </table>
+            
+        <table id="Result" class="table table-bordered table-responsive">
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function (){
+                var getTableNo = $("#TblNo").val();
+                var getTableRange = $("#tblRange").val();
+                $("#Result").empty();
+                
+                for (let index = 1; index <= getTableRange; index++) {
+                    var Total = Number(index) * Number(getTableNo);
+                    $("#Result").append("<tr><td>"+getTableNo+" X "+index+" = "+Total+"</td></tr>");
+                }
+            });
+            $("#btnCheck").click(function () {
+                var getTableNo = $("#TblNo").val();
+                var getTableRange = $("#tblRange").val();
+                $("#Result").empty();
+                
+                for (let index = 1; index <= getTableRange; index++) {
+                    var Total = Number(index) * Number(getTableNo);
+                    var evenOrOdd = (Total % 2 === 0) ? "Even" : "Odd";
+                    $("#Result").append("<tr><td>"+getTableNo+" X "+index+" = "+Total+" (<b>"+evenOrOdd+"</b>)</td></tr>");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
